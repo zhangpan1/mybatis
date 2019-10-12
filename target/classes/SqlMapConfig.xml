@@ -3,22 +3,45 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!-- 和spring整合后 environments配置将废除-->
+    <properties resource="db.properties"/>
+    <typeAliases>
+        <!--定义单个pojo类别名
+        type:类的全路径名
+        alias:别名
+        -->
+        <typeAlias type="com.centaline.pojo.User" alias="User"/>
+        <!--使用包扫描的方式定义别名
+        定以后别名等于类名，不区分大小写，但是建议 按照java 命名规则来，首字母小写，以后每个单词的首字母大写
+        -->
+
+    </typeAliases>
+
+   <!-- &lt;!&ndash; 和spring整合后 environments配置将废除&ndash;&gt;
     <environments default="development">
         <environment id="development">
-            <!-- 使用jdbc事务管理-->
+            &lt;!&ndash; 使用jdbc事务管理&ndash;&gt;
             <transactionManager type="JDBC" />
-            <!-- 数据库连接池-->
+            &lt;!&ndash; 数据库连接池&ndash;&gt;
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://10.7.11.46:3306/mybatis?characterEncoding=utf-8" />
-                <property name="username" value="root" />
-                <property name="password" value="123456" />
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
             </dataSource>
         </environment>
-    </environments>
-
-    <mappers>
+    </environments>-->
+    <!--
+     使用class 属性
+    -->
+  <!--  <mappers>
         <mapper resource="mapper/User.xml"></mapper>
+       &lt;!&ndash; <mapper class="com.centaline.mapper.UserMapper"></mapper>&ndash;&gt;
+
+        &lt;!&ndash;使用包扫描的方式 批量引入Mapper接口&ndash;&gt;
+        <package name="com.centaline.mapper"/>
     </mappers>
+    -->
+   
+    
+    
 </configuration>

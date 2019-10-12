@@ -32,5 +32,5 @@
         </selectKey>
         insert into user (username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address})
     </insert>
-    <delete id=""
+
 </mapper>
